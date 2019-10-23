@@ -1,0 +1,8 @@
+.Message {
+ 
+    border: 1px solid gray;
+    border-radius: 20%;
+    /*width: 20%;*/
+    margin: 5px;
+    background-color: lightblue;
+}
