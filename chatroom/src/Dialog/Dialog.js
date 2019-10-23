@@ -12,8 +12,6 @@ class Dialog extends React.Component {
     }
 
     componentDidMount() {
-        console.log("mount");
-        this.socket.emit("client typed new message", {"content": "client loaded..", "author": "server"});
         
         this.socket.on("update chat", (msg) => {
           console.log(msg);
@@ -27,6 +25,7 @@ class Dialog extends React.Component {
             (msg, i) => <Message key={i} author={msg.author} content={msg.content}></Message>
         );
         return <div className="Dialog">
+            <div>hello, {this.props.name}</div>
             <span>dialog</span>
             {messages}
             <TypedMessage onNewMessageTyped={this.props.onNewMessageTyped}></TypedMessage>

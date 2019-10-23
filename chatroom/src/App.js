@@ -29,7 +29,7 @@ class App extends React.Component {
       <header className="App-header">         
           { this.state.logged 
                ? 
-               <Dialog onNewMessageTyped={this.onNewMessageTyped}/>
+               <Dialog onNewMessageTyped={this.onNewMessageTyped} name={this.state.name}/>
                : 
                <Login onLog={this.onLog}/>
           }

@@ -11,11 +11,12 @@ app.get('/', function(req, res) {
   res.send("hello world");
 });
 
-
+let clients = [];
 
 io.on("connection", socket => {
 
   console.log("New client connected");
+  clients.push(socket);
   socket.on("disconnect", () => console.log(`Client disconnected`));
   
   socket.on("user logged in", function(name) {
@@ -24,7 +25,9 @@ io.on("connection", socket => {
   
   socket.on("client typed new message", function(msg) {
     console.log(`new message: ${msg.content}, from: ${msg.author}`);
-    socket.emit("update chat", msg);
+    for (let client of clients) {
+      client.emit("update chat", msg);
+    }
   })
 });
 
